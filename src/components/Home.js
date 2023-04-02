@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import MetaData from "./layouts/MetaData";
+import { useDispatch,useSelector } from "react-redux";
+import {getProducts} from "../actions/productActions";
 export const Home = () => {
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    console.log('Using Effect')
+    dispatch(getProducts());
+  },[dispatch])
+
+  
   return (
     <>
       <div className="container container-fluid">
