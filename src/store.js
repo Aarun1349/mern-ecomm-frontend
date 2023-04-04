@@ -5,8 +5,8 @@ import {
 } from "@reduxjs/toolkit";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { productsReducer } from "./reducers/productReducers";
-const reducer = combineReducers({ productsReducer });
+import { productsReducer,productDetailsReducer } from "./reducers/productReducers";
+const reducer = combineReducers({products: productsReducer,productDetails:productDetailsReducer });
 
 let initialState = { cartItems: [] };
 
@@ -14,6 +14,7 @@ const middelware = [thunk];
 const store = configureStore({
   reducer: reducer,
   initialState,
+//   middleware:{...middelware}
   //   middleware:()=> composeWithDevTools(applyMiddleware(...middelware))}
 //   middleware: (getDefaultMiddleware) =>
 //     getDefaultMiddleware().concat(
