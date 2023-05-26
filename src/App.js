@@ -6,20 +6,23 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 function App() {
   return (
-   
-      <Router>
-        <div className="app">
-          <Header />
-          <div className="conatiner container-fluid">
-            <Routes>
-              <Route path="/" exact element={<Home />}></Route>
-              <Route path="/product/:id" exact element={<ProductDetails />}></Route>
-            </Routes>
-          </div>
-          <Footer />
+    <Router>
+      <div className="app">
+        <Header />
+        <div className="conatiner container-fluid">
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/search/:keyword" element={<Home />}></Route>
+            <Route
+              path="/product/:id"
+              exact
+              element={<ProductDetails />}
+            ></Route>
+          </Routes>
         </div>
-      </Router>
- 
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

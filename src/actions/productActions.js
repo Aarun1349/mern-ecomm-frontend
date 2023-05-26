@@ -17,14 +17,24 @@ const instance = axios.create({
 
 // get all products
 export const getProducts =
-  (currentPage = 1) =>
+  (keyword = "", currentPage = 1, price, category, rating = 0) =>
   async (dispatch) => {
     try {
       dispatch({ type: ALL_PRODUCTS_REQUEST });
-
-      const { data } = await instance.get(
-        `/api/v1/products?page=${currentPage}`
-      );
+      // const link = `/api/v1/products?keyword=${keyword}&page=${currentPage}}`
+      // console.log(price)
+      let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`;
+      console.log("link", link);
+      if (category) {
+        console.log(category);
+        // link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category} `;
+        link = `/api/v1/products?page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category} `;
+        console.log("link", link);
+      }
+      // if (rating) {
+      //   link = `/api/v1/products?page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category} `;
+      // }
+      const { data } = await instance.get(link);
 
       dispatch({
         type: ALL_PRODUCTS_SUCCESS,

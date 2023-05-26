@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useNavigation } from "react-router-dom";
-const Product = ({ props, getProductById }) => {
+import { Link } from "react-router-dom";
+const Product = ({ props, getProductById, col }) => {
   const item = props;
 
   return (
-    <div className="col-sm-12 col-md-6 col-lg-3 my-3" key={item._id}>
+    <div className={`col-sm-12 col-md-6 col-lg-${col} my-3`} key={item._id}>
       <div className="card p-3 rounded">
         <img
           className="card-img-top mx-auto"
