@@ -4,8 +4,10 @@ import {
   LOGIN_REQUEST,
   CLEAR_ERRORS,
 } from "../constants/userConstants";
-
-export const authReducer = (state = { user: {} }, action) => {
+const initialState = {
+  user:{}
+}
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_REQUEST: {
       return {
@@ -31,6 +33,14 @@ export const authReducer = (state = { user: {} }, action) => {
       };
     }
     case CLEAR_ERRORS: {
+      return {
+        ...state,
+        loading: false,
+        isAuthenticatted: false,
+        error: null,
+      };
+    }
+    default:{
       return {
         ...state,
         loading: false,

@@ -13,7 +13,7 @@ import {
 const reducer = combineReducers({
   products: productsReducer,
   productDetails: productDetailsReducer,
-  authReducer: authReducer
+  auth: authReducer
 });
 
 let initialState = { cartItems: [] };
